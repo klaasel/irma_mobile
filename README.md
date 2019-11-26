@@ -1,6 +1,8 @@
 irma_mobile
 ===========
 
+(This is a fork for research purposes regarding the research of implementing QUIC in the IRMA app, see the bottom for instructions)
+
 ### Authentication made easy, privacy-friendly, and secure
 
 IRMA offers a privacy-friendly, flexible and secure solution to many authentication problems, putting the user in full control over his/her data.
@@ -91,3 +93,8 @@ The IRMA app manages the user's IRMA attributes: receiving new attributes, selec
 We use BrowserStack to test on actual devices:
 
 <a href="https://browserstack.com"><img src="https://www.browserstack.com/images/layout/browserstack-logo-600x315.png" height="80" /></a>
+
+### QUIC research
+
+This is a fork of the PBDF irma_mobile repository. In this fork we implemented location tracking and saving logs to file. In order to use QUIC in the mobile application, clone quic-go in your Go folder. Assign the "http3.RoundTripper{}"" as mentioned in the quic-go documentation to the innerTransport in vendor/github.com/privacybydesign/irmago/transport.go r77 and ensure the import "github.com/lucas-clemente/quic-go/http3" is added. 
+N.B. a QUIC client does not support HTTP/TLS connections as a fallback like a QUIC server does. Your IRMA server and your own keyshare server implementation should support QUIC.
