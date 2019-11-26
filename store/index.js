@@ -6,6 +6,7 @@ import { Sentry } from 'react-native-sentry';
 
 import irmaBridgeMiddleware from './middlewares/irmaBridge';
 import rootReducer from './reducers/root';
+import { LogToFileWithLocation } from './middlewares/utils';
 
 export let store;
 
@@ -21,9 +22,14 @@ export const getAutoIncrementId = () => {
 const irmaBridgeListener = (actionJson) => {
   const action = JSON.parse(actionJson);
 
-  if (__DEV__)
-    console.log('Received action from bridge:', action); // eslint-disable-line no-console
+  if (__DEV__) {
+    const logtext = 'Received action from bridge: |'+ actionJson;
 
+    // get timestamp here for log in console
+    const timestamp = new Date().toISOString();
+    console.log(timestamp + ' - Received action from bridge:', action); // eslint-disable-line no-console
+    LogToFileWithLocation(logtext);
+  }
   store.dispatch(action);
 };
 

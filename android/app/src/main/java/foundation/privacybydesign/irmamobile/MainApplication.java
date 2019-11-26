@@ -13,6 +13,8 @@ import com.wix.RNCameraKit.RNCameraKitPackage;
 import dk.madslee.imageSequence.RCTImageSequencePackage;
 import io.sentry.RNSentryPackage;
 import com.reactcommunity.rnlanguages.RNLanguagesPackage;
+import com.rnfs.RNFSPackage;
+import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 
 import org.irmacard.cardemu.BuildConfig;
 
@@ -44,7 +46,9 @@ public class MainApplication extends NavigationApplication {
             new RNCameraKitPackage(),
             new RCTImageSequencePackage(),
             new RNSentryPackage(),
-            new RNLanguagesPackage()
+            new RNLanguagesPackage(),
+            new RNFSPackage(),
+            new RNFusedLocationPackage()
         );
     }
 
